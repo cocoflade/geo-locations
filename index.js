@@ -1,3 +1,7 @@
+//St.Peter's Square = lat: 53.478056, lng: -2.245833
+// Radius = 1500m
+// PositionCount = 200 points
+
 const randomGeoPoints = (centrePoint, radius, positionCount) => {
   const points = [];
   for (let i = 0; i < positionCount; i++) {
@@ -26,16 +30,15 @@ const generateRandomPoint = (centrePoint, radius) => {
   return { lat: y + latitude, lng: xp + longitude, time: currentTime() };
 };
 
-function currentTime() {
+const currentTime = () => {
   const dateNow = new Date();
   const hrs = dateNow.getHours();
   const min = dateNow.getMinutes();
   const sec = dateNow.getSeconds();
   const fullTime = `${hrs}:${min}:${sec}`;
   return fullTime;
-}
+};
 
-// Generates 200 points that is in a 1.5km radius from the centre
 // console.log(randomGeoPoints({ lat: 53.478056, lng: -2.245833 }, 1500, 200));
 
 module.exports = { randomGeoPoints, generateRandomPoint, currentTime };
