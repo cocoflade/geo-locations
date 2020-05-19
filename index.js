@@ -23,10 +23,19 @@ const generateRandomPoint = (centrePoint, radius) => {
 
   const xp = x / Math.cos(latitude);
 
-  return { lat: y + latitude, lng: xp + longitude };
+  return { lat: y + latitude, lng: xp + longitude, time: currentTime() };
 };
 
-// Generates 200 points that is in a 1.5km radius from the centre
-console.log(randomGeoPoints({ lat: 53.478056, lng: -2.245833 }, 1500, 200));
+function currentTime() {
+  const dateNow = new Date();
+  const hrs = dateNow.getHours();
+  const min = dateNow.getMinutes();
+  const sec = dateNow.getSeconds();
+  const fullTime = `${hrs}:${min}:${sec}`;
+  return fullTime;
+}
 
-module.exports = { randomGeoPoints, generateRandomPoint };
+// Generates 200 points that is in a 1.5km radius from the centre
+// console.log(randomGeoPoints({ lat: 53.478056, lng: -2.245833 }, 1500, 200));
+
+module.exports = { randomGeoPoints, generateRandomPoint, currentTime };
